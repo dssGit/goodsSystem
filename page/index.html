@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodsSystem</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="system"><a href="/">goodsSystem</a></span>
+            <ul class="nav">
+                <li><a href="/">出库</a></li>
+                <li><a href="/">入库</a></li>
+                <li><a href="/">关于</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="请输入关键字">
+                <button>搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content_left">
+            <div class="goods_info" id="goods_info">
+                <div class="info_user">
+                    时间：<input type="text" placeholder="请输入时间" id="goods_date">
+                    客户名：<input type="text" placeholder="请输入客户名" id="goods_name">
+                </div>
+                <div class="info_goods" v-for="item in infoGoods" v-html="item">
+
+                </div>
+
+                <button @click="addInfoGoods()">添加</button>
+                <button id="goods_search" @click="addGoods()">提交</button>
+            </div>
+
+
+
+            <div class="top"></div>
+        </div>
+
+        <div class="content_right">
+            <div class="calendar">
+                <div class="date_header">
+                    <div class="prev_month"></div>
+<!--                    <div class="show_date">{{ `year`年`month`月`day`日}}</div>-->
+                    <div class="show_date">2019年8月12日</div>
+                    <div class="next_month"></div>
+                </div>
+
+                <div class="date_content">
+                    <div class="week_header">
+                        <div>日</div>
+                        <div>一</div>
+                        <div>二</div>
+                        <div>三</div>
+                        <div>四</div>
+                        <div>五</div>
+                        <div>六</div>
+                    </div>
+
+                    <div class="week_day">
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                            <li>18</li>
+                            <li>19</li>
+                            <li>20</li>
+                            <li>21</li>
+                            <li>22</li>
+                            <li>23</li>
+                            <li>24</li>
+                            <li>25</li>
+                            <li>26</li>
+                            <li>27</li>
+                            <li>28</li>
+                            <li>29</li>
+                            <li>30</li>
+                            <li>31</li>
+                            <li>32</li>
+                            <li>33</li>
+                            <li>34</li>
+                            <li>35</li>
+                            <li>36</li>
+                            <li>37</li>
+                            <li>38</li>
+                            <li>39</li>
+                            <li>40</li>
+                            <li>41</li>
+                            <li>42</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new_goods">
+                <span>最新出货</span>
+                <ul>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="hot_model">
+                <span>热门型号</span>
+                <ul>
+                    <li><a href="/">#1925</a></li>
+                    <li><a href="/">#221</a></li>
+                    <li><a href="/">#999</a></li>
+                    <li><a href="/">#2649</a></li>
+                    <li><a href="/">#7586</a></li>
+                    <li><a href="/">#1452</a></li>
+                    <li><a href="/">#5828</a></li>
+                    <li><a href="/">#222</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>

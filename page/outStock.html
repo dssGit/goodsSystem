@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodsSystem</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/base.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="system"><a href="/">goodsSystem</a></span>
+            <ul class="nav">
+                <li><a href="/">首页</a></li>
+                <li><a href="/">出库</a></li>
+                <li><a href="/">入库</a></li>
+                <li><a href="/">关于</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="请输入关键字">
+                <button>搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="content_left">
+            <div class="goods_info" id="goods_info">
+                <div class="info_user">
+                    时间：<input type="text" placeholder="请输入时间" id="goods_date" v-model="date">
+                    客户名：<input type="text" placeholder="请输入客户名" id="goods_name">
+                </div>
+                <div class="info_goods">
+                    型号：<input type="text" placeholder="请输入型号" id="goods_model">
+                    数量：<input type="text" placeholder="请输入数量" id="goods_num" v-model="num" @change="changeNum()">
+                    单价：<input type="text" placeholder="请输入单价" id="goods_price">
+                    <div class="goods_num">
+                        <ul>
+                            <li v-for="item in weight" v-html="item"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button @click="addInfoGoods()">添加</button>
+                <button id="goods_search" @click="addGoods()">提交</button>
+            </div>
+
+
+
+            <div class="top"></div>
+        </div>
+
+        <div class="content_right">
+            <div class="calendar" id="calendar">
+                <div class="date_header">
+                    <div class="prev_month" @click="handlePrev()"></div>
+                    <div class="show_date">{{year}}年{{month}}月{{day}}日</div>
+                    <!--                    <div class="show_date">2019年8月12日</div>-->
+                    <div class="next_month" @click="handleNext()"></div>
+                </div>
+
+                <div class="date_content">
+                    <div class="week_header">
+                        <div>日</div>
+                        <div>一</div>
+                        <div>二</div>
+                        <div>三</div>
+                        <div>四</div>
+                        <div>五</div>
+                        <div>六</div>
+                    </div>
+
+                    <div class="week_day">
+                        <div class="every_day" v-for="item in 42">
+                            <div v-if="item - beginDay > 0 && item - beginDay <= curDays" @click="changeDay" :data-day="item - beginDay" :class="{
+                                   'now_day': `${year}-${month}-${item - beginDay}` === curDate,
+                                'active_day': `${year}-${month}-${item - beginDay}` === `${year}-${month}-${day}`
+                                }">{{item - beginDay}}</div>
+                            <div v-if="item - beginDay <= 0" class="other_day">{{item - beginDay + prevDays}}</div>
+                            <div v-if="item - beginDay > curDays" class="other_day">{{item - beginDay - curDays}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="new_goods">
+                <span>最新出货</span>
+                <ul>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+                    <li>
+                        <a href="/">董圣圣 #1999 50件</a>
+                        <span>2018年8月1日</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="hot_model">
+                <span>热门型号</span>
+                <ul>
+                    <li><a href="/">#1925</a></li>
+                    <li><a href="/">#221</a></li>
+                    <li><a href="/">#999</a></li>
+                    <li><a href="/">#2649</a></li>
+                    <li><a href="/">#7586</a></li>
+                    <li><a href="/">#1452</a></li>
+                    <li><a href="/">#5828</a></li>
+                    <li><a href="/">#222</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+    <script src="./js/base.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+</html>
